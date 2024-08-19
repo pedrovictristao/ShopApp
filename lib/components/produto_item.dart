@@ -10,7 +10,7 @@ class ProdutoItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final produto = Provider.of<Produto>(context);
+    final produto = Provider.of<Produto>(context, listen: false);
 
     return ClipRRect(
       borderRadius: BorderRadius.circular(10),

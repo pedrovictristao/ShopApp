@@ -20,10 +20,22 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         title: 'Flutter Demo',
         theme: ThemeData(
-            fontFamily: 'Merriweather',
-            colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-            canvasColor: Colors.blueGrey),
-        home: Visaogeral(),
+          fontFamily: 'Merriweather',
+          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+          canvasColor: Colors.blueGrey,
+          textTheme: const TextTheme(
+            titleLarge: TextStyle(
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
+              color: Colors.white,
+            ),
+            headlineSmall: TextStyle(
+              fontSize: 12,
+              color: Colors.white,
+            ),
+          ),
+        ),
+        home: const Visaogeral(),
         routes: {Rotas.PAGE_DETALHES: (ctx) => const Detalhes()},
         debugShowCheckedModeBanner: false,
       ),
