@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:shop_app/models/produto_lista.dart';
+import 'package:shop_app/components/cracha.dart';
+import 'package:shop_app/models/carrinho.dart';
+import 'package:shop_app/utils/rotas.dart';
 import '../components/grid_produto.dart';
 
 enum OpcaoFiltro {
@@ -8,8 +10,15 @@ enum OpcaoFiltro {
   todos,
 }
 
-class Visaogeral extends StatelessWidget {
+class Visaogeral extends StatefulWidget {
   const Visaogeral({super.key});
+
+  @override
+  State<Visaogeral> createState() => _VisaogeralState();
+}
+
+class _VisaogeralState extends State<Visaogeral> {
+  bool _mostrarFavoritos = false;
 
   @override
   Widget build(BuildContext context) {
@@ -36,14 +45,35 @@ class Visaogeral extends StatelessWidget {
               ),
             ],
             onSelected: (OpcaoFiltro valorSelecionado) {
-              if (valorSelecionado == OpcaoFiltro.favorito) {
-              } else {}
+              setState(() {
+                if (valorSelecionado == OpcaoFiltro.favorito) {
+                  _mostrarFavoritos = true;
+                } else {
+                  _mostrarFavoritos = false;
+                }
+              });
             },
-          )
+          ),
+          Consumer<Carrinho>(
+            child: IconButton(
+              onPressed: () {
+                Navigator.of(context).pushNamed(Rotas.PAGE_CARRINHO);
+              },
+              icon: const Icon(
+                Icons.shopping_cart,
+                color: Colors.white,
+              ),
+            ),
+            builder: (ctx, carrinho, child) => Cracha(
+              valor: carrinho.contarItens.toString(),
+              Colors.amber,
+              child: child!,
+            ),
+          ),
         ],
         backgroundColor: Theme.of(context).canvasColor,
       ),
-      body: const GridProduto(),
+      body: GridProduto(_mostrarFavoritos),
     );
   }
 }

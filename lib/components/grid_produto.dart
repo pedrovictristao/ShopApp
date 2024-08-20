@@ -5,14 +5,15 @@ import 'package:shop_app/models/produto.dart';
 import 'package:shop_app/models/produto_lista.dart';
 
 class GridProduto extends StatelessWidget {
-  //List<Produto>? produtosCarregados;
+  final bool mostrarFavoritos;
 
-  const GridProduto({super.key});
+  const GridProduto(this.mostrarFavoritos, {super.key});
 
   @override
   Widget build(BuildContext context) {
     final provider = Provider.of<ProdutoLista>(context);
-    List<Produto> produtosCarregados = provider.itens;
+    final List<Produto> produtosCarregados =
+        mostrarFavoritos ? provider.itensFavoritos : provider.itens;
 
     return GridView.builder(
       padding: const EdgeInsets.all(10),

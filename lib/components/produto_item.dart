@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:shop_app/models/carrinho.dart';
 import 'package:shop_app/models/produto.dart';
 import 'package:shop_app/utils/rotas.dart';
 
@@ -11,6 +12,7 @@ class ProdutoItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final produto = Provider.of<Produto>(context, listen: false);
+    final carrinho = Provider.of<Carrinho>(context, listen: false);
 
     return ClipRRect(
       borderRadius: BorderRadius.circular(10),
@@ -35,7 +37,9 @@ class ProdutoItem extends StatelessWidget {
             ),
           ),
           trailing: IconButton(
-            onPressed: () {},
+            onPressed: () {
+              carrinho.addItem(produto);
+            },
             icon: const Icon(
               Icons.shopping_cart,
             ),

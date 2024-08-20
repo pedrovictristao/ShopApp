@@ -6,6 +6,8 @@ class ProdutoLista with ChangeNotifier {
   final List<Produto> _itens = produtosFalsos;
 
   List<Produto> get itens => [..._itens];
+  List<Produto> get itensFavoritos =>
+      _itens.where((prod) => prod.isFavorite).toList();
 
   void addProduto(Produto produto) {
     _itens.add(produto);
