@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shop_app/components/item_carrinho_widget.dart';
 import 'package:shop_app/models/carrinho.dart';
+import 'package:shop_app/models/ordem_lista.dart';
 
 class PageCarrinho extends StatelessWidget {
   const PageCarrinho({super.key});
@@ -46,7 +47,11 @@ class PageCarrinho extends StatelessWidget {
                   ),
                   const Spacer(),
                   TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Provider.of<OrdemLista>(context, listen: false)
+                          .adicionarOrdem(carrinho);
+                      carrinho.limparLista();
+                    },
                     style: TextButton.styleFrom(
                       textStyle: TextStyle(
                         color: Theme.of(context).primaryColor,

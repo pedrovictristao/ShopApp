@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:shop_app/components/app_drawer.dart';
 import 'package:shop_app/components/cracha.dart';
 import 'package:shop_app/models/carrinho.dart';
 import 'package:shop_app/utils/rotas.dart';
@@ -74,6 +75,7 @@ class _VisaogeralState extends State<Visaogeral> {
         backgroundColor: Theme.of(context).canvasColor,
       ),
       body: GridProduto(_mostrarFavoritos),
+      drawer: const AppDrawer(),
     );
   }
 }

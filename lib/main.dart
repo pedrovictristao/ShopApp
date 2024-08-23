@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shop_app/models/carrinho.dart';
+import 'package:shop_app/models/ordem_lista.dart';
 import 'package:shop_app/models/produto_lista.dart';
 import 'package:shop_app/pages/page_carrinho.dart';
 import 'package:shop_app/pages/page_detalhes.dart';
+import 'package:shop_app/pages/page_ordem.dart';
 import 'package:shop_app/pages/page_visao_geral.dart';
 import 'package:shop_app/utils/rotas.dart';
 
@@ -24,6 +26,9 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(
           create: (_) => Carrinho(),
         ),
+        ChangeNotifierProvider(
+          create: (_) => OrdemLista(),
+        ),
       ],
       child: MaterialApp(
         title: 'Flutter Demo',
@@ -43,10 +48,12 @@ class MyApp extends StatelessWidget {
             ),
           ),
         ),
-        home: const Visaogeral(),
+        //home: const Visaogeral(),
         routes: {
+          Rotas.HOME: (ctx) => const Visaogeral(),
           Rotas.PAGE_DETALHES: (ctx) => const Detalhes(),
           Rotas.PAGE_CARRINHO: (ctx) => const PageCarrinho(),
+          Rotas.ORDEM: (ctx) => const PageOrdem(),
         },
         debugShowCheckedModeBanner: false,
       ),
