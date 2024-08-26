@@ -41,7 +41,7 @@ class PageCarrinho extends StatelessWidget {
                   ),
                   Chip(
                     label: Text(
-                      'R\$ ${carrinho.quantidadeTotal}',
+                      'R\$ ${carrinho.quantidadeTotal.toStringAsFixed(2)}',
                       style: const TextStyle(color: Colors.white),
                     ),
                   ),

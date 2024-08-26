@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shop_app/components/app_drawer.dart';
+import 'package:shop_app/components/ordem_widget.dart';
 import 'package:shop_app/models/ordem_lista.dart';
 
 class PageOrdem extends StatelessWidget {
@@ -16,9 +17,7 @@ class PageOrdem extends StatelessWidget {
       drawer: const AppDrawer(),
       body: ListView.builder(
         itemCount: ordens.contarItens,
-        itemBuilder: (ctx, i) => Text(
-          ordens.itens[i].total.toString(),
-        ),
+        itemBuilder: (ctx, i) => OrdemWidget(ordem: ordens.itens[i]),
       ),
     );
   }
