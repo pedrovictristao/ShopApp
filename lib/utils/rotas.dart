@@ -6,4 +6,6 @@ class Rotas {
   static const PAGE_VISAO_GERAL = '/page-visao-geral';
   static const PAGE_CARRINHO = '/page-carrinho';
   static const ORDEM = '/ordem';
+  static const PAGINA_PRODUTO = '/produtos';
+  static const PAGINA_FORM_PRODUTO = '/pagina-form-produto';
 }

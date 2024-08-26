@@ -3,10 +3,12 @@ import 'package:provider/provider.dart';
 import 'package:shop_app/models/carrinho.dart';
 import 'package:shop_app/models/ordem_lista.dart';
 import 'package:shop_app/models/produto_lista.dart';
+import 'package:shop_app/pages/form_produto_pagina.dart';
 import 'package:shop_app/pages/page_carrinho.dart';
 import 'package:shop_app/pages/page_detalhes.dart';
 import 'package:shop_app/pages/page_ordem.dart';
 import 'package:shop_app/pages/page_visao_geral.dart';
+import 'package:shop_app/pages/pagina_produto.dart';
 import 'package:shop_app/utils/rotas.dart';
 
 void main() {
@@ -54,6 +56,8 @@ class MyApp extends StatelessWidget {
           Rotas.PAGE_DETALHES: (ctx) => const Detalhes(),
           Rotas.PAGE_CARRINHO: (ctx) => const PageCarrinho(),
           Rotas.ORDEM: (ctx) => const PageOrdem(),
+          Rotas.PAGINA_PRODUTO: (ctx) => const PaginaProduto(),
+          Rotas.PAGINA_FORM_PRODUTO: (ctx) => const FormProdutoPagina(),
         },
         debugShowCheckedModeBanner: false,
       ),

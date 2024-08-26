@@ -1,61 +1,32 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:shop_app/models/carrinho.dart';
 import 'package:shop_app/models/produto.dart';
-import 'package:shop_app/utils/rotas.dart';
 
 class ProdutoItem extends StatelessWidget {
-  const ProdutoItem({super.key});
+  const ProdutoItem(this.produto, {super.key});
 
-  // final Produto produto;
+  final Produto produto;
 
   @override
   Widget build(BuildContext context) {
-    final produto = Provider.of<Produto>(context, listen: false);
-    final carrinho = Provider.of<Carrinho>(context, listen: false);
-
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(10),
-      child: GridTile(
-        footer: GridTileBar(
-          backgroundColor: Colors.black54,
-          leading: Consumer<Produto>(
-            builder: (ctx, produto, _) => IconButton(
-              onPressed: () {
-                produto.alternarFavorito();
-              },
-              icon: Icon(
-                  produto.isFavorite ? Icons.favorite : Icons.favorite_border),
+    return ListTile(
+      leading: CircleAvatar(
+        backgroundImage: AssetImage(produto.imagemURL),
+      ),
+      title: Text(produto.nome),
+      trailing: Container(
+        width: 100,
+        child: Row(
+          children: [
+            IconButton(
+              onPressed: () {},
+              icon: const Icon(Icons.edit),
             ),
-          ),
-          title: Text(
-            produto.nome,
-            textAlign: TextAlign.center,
-            style: const TextStyle(
-              fontFamily: 'Merriweather',
-              fontSize: 9,
+            IconButton(
+              onPressed: () {},
+              color: Colors.redAccent,
+              icon: const Icon(Icons.delete),
             ),
-          ),
-          trailing: IconButton(
-            onPressed: () {
-              carrinho.addItem(produto);
-            },
-            icon: const Icon(
-              Icons.shopping_cart,
-            ),
-          ),
-        ),
-        child: GestureDetector(
-          child: Image.asset(
-            produto.imagemURL,
-            fit: BoxFit.cover,
-          ),
-          onTap: () {
-            Navigator.of(context).pushNamed(
-              Rotas.PAGE_DETALHES,
-              arguments: produto,
-            );
-          },
+          ],
         ),
       ),
     );

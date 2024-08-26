@@ -27,6 +27,34 @@ class ItemCarrinhoWidget extends StatelessWidget {
           size: 40,
         ),
       ),
+      confirmDismiss: (_) {
+        return showDialog<bool>(
+            context: context,
+            builder: (ctx) => AlertDialog(
+                  title: const Text(
+                    'Tem certeza?',
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold),
+                  ),
+                  content: const Text('Deseja remover o item do carrinho?'),
+                  actions: [
+                    TextButton(
+                      onPressed: () {
+                        Navigator.of(ctx).pop(false);
+                      },
+                      child: const Text('Não'),
+                    ),
+                    TextButton(
+                      onPressed: () {
+                        Navigator.of(ctx).pop(true);
+                      },
+                      child: const Text('Sim'),
+                    ),
+                  ],
+                ));
+      },
       onDismissed: (_) {
         Provider.of<Carrinho>(
           context,
@@ -38,21 +66,23 @@ class ItemCarrinhoWidget extends StatelessWidget {
           horizontal: 10,
           vertical: 4,
         ),
-        child: ListTile(
-          leading: CircleAvatar(
-            child: Padding(
-              padding: const EdgeInsets.all(5),
-              child: FittedBox(
-                child: Text('${carrinhoItem.preco}'),
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: ListTile(
+            leading: CircleAvatar(
+              child: Padding(
+                padding: const EdgeInsets.all(5),
+                child: FittedBox(
+                  child: Text('${carrinhoItem.preco}'),
+                ),
               ),
             ),
+            title: Text(carrinhoItem.nome),
+            subtitle: Text(
+                'Total: R\$ ${carrinhoItem.preco * carrinhoItem.quantidade}',
+                style: const TextStyle(color: Colors.grey)),
+            trailing: Text('${carrinhoItem.quantidade}x'),
           ),
-          title: Text(carrinhoItem.nome),
-          subtitle: Text(
-            'Total: R\$ ${carrinhoItem.preco * carrinhoItem.quantidade}',
-            style: const TextStyle(color: Colors.grey),
-          ),
-          trailing: Text('${carrinhoItem.quantidade}x'),
         ),
       ),
     );

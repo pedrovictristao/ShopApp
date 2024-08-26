@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:shop_app/components/produto_item.dart';
+import 'package:shop_app/components/grid_produto_item.dart';
 import 'package:shop_app/models/produto.dart';
 import 'package:shop_app/models/produto_lista.dart';
 
@@ -26,7 +26,7 @@ class GridProduto extends StatelessWidget {
       ),
       itemBuilder: (ctx, i) => ChangeNotifierProvider.value(
         value: produtosCarregados[i],
-        child: const ProdutoItem(),
+        child: const GridProdutoItem(),
       ),
     );
   }
