@@ -24,8 +24,7 @@ class GridProdutoItem extends StatelessWidget {
               onPressed: () {
                 produto.alternarFavorito();
               },
-              icon: Icon(
-                  produto.isFavorite ? Icons.favorite : Icons.favorite_border),
+              icon: Icon(produto.isFavorite ? Icons.favorite : Icons.favorite_border),
             ),
           ),
           title: Text(
@@ -58,7 +57,7 @@ class GridProdutoItem extends StatelessWidget {
           ),
         ),
         child: GestureDetector(
-          child: Image.asset(
+          child: Image.network(
             produto.imagemURL,
             fit: BoxFit.cover,
           ),

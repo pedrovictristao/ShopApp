@@ -6,8 +6,7 @@ class Detalhes extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Produto produto =
-        ModalRoute.of(context)?.settings.arguments as Produto;
+    final Produto produto = ModalRoute.of(context)?.settings.arguments as Produto;
     return Scaffold(
       appBar: AppBar(
         title: Text(produto.nome),
@@ -18,7 +17,7 @@ class Detalhes extends StatelessWidget {
             Container(
               height: 300,
               width: double.infinity,
-              child: Image.asset(
+              child: Image.network(
                 produto.imagemURL,
                 fit: BoxFit.cover,
               ),

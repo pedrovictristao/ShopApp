@@ -5,7 +5,7 @@ import 'package:shop_app/models/carrinho.dart';
 import 'package:shop_app/models/ordem.dart';
 
 class OrdemLista with ChangeNotifier {
-  List<Ordem> _itens = [];
+  final List<Ordem> _itens = [];
 
   List<Ordem> get itens {
     return [..._itens];
